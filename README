@@ -1,0 +1,31 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3632
+
+Global plugin for adding patch tags as defined in the linux kernel
+Documentation/SubmittingPatches document, examples of patch tags are:
+ - Acked-by
+ - Signed-off-by
+ - Tested-by
+ - Reviewed-by
+
+the plugin allows to add also a Copyright line.
+
+The author name and email address are retrieved from the git configuration.
+
+Examples:
+
+  <Leader>ack
+          Add a Acked-by tag getting developer info from git config
+
+  <Leader>cpy
+          Add a copyright line getting developer info from git config and using
+          the current date
+
+  <Leader>rev
+          Add a Reviewed-by tag getting developer info from git config
+
+  <Leader>sob
+          Add a Signed-off-by tag getting developer info from git config
+
+  <Leader>tst
+          Add a Tested-by tag getting developer info from git config
+
