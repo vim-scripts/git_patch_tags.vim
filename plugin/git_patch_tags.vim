@@ -1,8 +1,8 @@
 "---------------------------------------------------------------------------
 " Global plugin for adding patch tags from linux SubmittingPatches document
 " Maintainer:  Antonio Ospite <ospite@studenti.unina.it>
-" Version:     0.1
-" Last Change: 2011-06-20
+" Version:     0.2
+" Last Change: 2013-10-11
 " License:     This script is free software; you can redistribute it and/or
 "              modify it under the terms of the GNU General Public License.
 "
@@ -56,8 +56,9 @@ map <Leader>tst :call GitTested()<CR>
 
 " Get developer info from git config
 funct! GitGetAuthor()
-	return system("git config --null --get user.name") .
-	      \ ' <' . system("git config --null --get user.email") . '>'
+	" Strip terminating NULLs to prevent stray ^A chars (see :help system)
+	return system('git config --null --get user.name | tr -d "\0"') .
+	      \ ' <' . system('git config --null --get user.email | tr -d "\0"') . '>'
 endfunc
 
 " Add a Acked-by tag getting developer info from git config
